@@ -6,9 +6,9 @@
     "webserver",
     "http"
   ],
-  "homepage": "https://github.com/chasyumen/easy-lite-webserver",
+  "homepage": "https://github.com/chasyumen/lite-webserver",
   "bugs": {
-    "url": "https://github.com/chasyumen/easy-lite-webserver/issues"
+    "url": "https://github.com/chasyumen/lite-webserver/issues"
   },
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chasyumen/easy-lite-webserver.git"
+    "url": "https://github.com/chasyumen/lite-webserver.git"
   },
   "author": "chasyumen",
   "license": "MIT",

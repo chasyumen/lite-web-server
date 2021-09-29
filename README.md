@@ -1,4 +1,4 @@
-# lite-webserver
+# lite-web-server
 
 The npm package to create simple web server.
 
@@ -6,7 +6,7 @@ This will load files from `/public` directory if it's not specified.
 
 ## Install
 ```
-npm i lite-webserver
+npm i lite-web-server
 ```
 
 ## Example
@@ -14,7 +14,7 @@ npm i lite-webserver
 This server will load files from `/public` directory.
 
 ```js
-var { WebServer } = require("lite-webserver")
+var { WebServer } = require("lite-web-server")
 var server = new WebServer()
 
 server.start()
@@ -23,7 +23,7 @@ server.start()
 If you want to specify the directory to load a file, use the code below.
 
 ```js
-var { WebServer } = require("lite-webserver")
+var { WebServer } = require("lite-web-server")
 var server = new WebServer({
   dir: "./public_html"
 })
@@ -84,7 +84,7 @@ Type: `String`
 Type a filename to get http header content-type.
 
 ```js
-var { GetContentType } = require("lite-webserver")
+var { GetContentType } = require("lite-web-server")
 
 var htmlname = "example.html"
 var contenttype = GetContentType(htmlname)

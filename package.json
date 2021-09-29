@@ -1,14 +1,14 @@
 {
-  "name": "lite-webserver",
+  "name": "lite-web-server",
   "version": "1.0.0",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",
     "http"
   ],
-  "homepage": "https://github.com/chasyumen/lite-webserver",
+  "homepage": "https://github.com/chasyumen/lite-web-server",
   "bugs": {
-    "url": "https://github.com/chasyumen/lite-webserver/issues"
+    "url": "https://github.com/chasyumen/lite-web-server/issues"
   },
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chasyumen/lite-webserver.git"
+    "url": "https://github.com/chasyumen/lite-web-server.git"
   },
   "author": "chasyumen",
   "license": "MIT",

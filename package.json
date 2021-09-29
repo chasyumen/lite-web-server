@@ -1,0 +1,29 @@
+{
+  "name": "lite-webserver",
+  "version": "1.0.0",
+  "description": "creates simple web server.",
+  "keywords": [
+    "webserver",
+    "http"
+  ],
+  "homepage": "https://github.com/chasyumen/easy-lite-webserver",
+  "bugs": {
+    "url": "https://github.com/chasyumen/easy-lite-webserver/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "main": "node index.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chasyumen/easy-lite-webserver.git"
+  },
+  "author": "chasyumen",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=12.16.1"
+  },
+  "engineStrict": true
+}

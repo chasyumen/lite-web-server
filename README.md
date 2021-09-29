@@ -1,4 +1,4 @@
-# lite-WebServer
+# lite-webserver
 
 The npm package to create simple web server.
 

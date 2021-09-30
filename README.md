@@ -6,6 +6,7 @@ The npm package to create simple web server.
 
 This will load files from `./public/` directory if it's not specified.
 
+
 ## Install
 ```
 npm i lite-web-server

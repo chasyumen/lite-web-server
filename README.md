@@ -2,7 +2,7 @@
 
 The npm package to create simple web server.
 
-This will load files from `/public` directory if it's not specified.
+This will load files from `./public` directory if it's not specified.
 
 ## Install
 ```
@@ -69,7 +69,7 @@ Default: `404 Not Found`
 
 ```js
 new WebServer({
-  notfound: "File was not found on this server."
+  notfound: "<center><h1>File was not found on this server.</h1></center>"
 })
 ```
 

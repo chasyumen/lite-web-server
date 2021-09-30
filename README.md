@@ -2,7 +2,7 @@
 
 The npm package to create simple web server.
 
-This will load files from `./public` directory if it's not specified.
+This will load files from `./public/` directory if it's not specified.
 
 ## Install
 ```
@@ -11,7 +11,7 @@ npm i lite-web-server
 
 ## Example
 
-This server will load files from `/public` directory.
+This server will load files from `./public/` directory.
 
 ```js
 var { WebServer } = require("lite-web-server")
@@ -25,7 +25,7 @@ If you want to specify the directory to load a file, use the code below.
 ```js
 var { WebServer } = require("lite-web-server")
 var server = new WebServer({
-  dir: "./public_html"
+  dir: "./public_html/"
 })
 
 server.start()
@@ -52,13 +52,13 @@ new WebServer({
 ##### directory (optional)
 Type: `String`
 
-Default: `./public`
+Default: `./public/`
 
 The directory to load the file.
 
 ```js
 new WebServer({
-  dir: "./public_html"
+  dir: "./public_html/"
 })
 ```
 

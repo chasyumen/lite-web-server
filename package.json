@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.1-canary.1633006180",
+  "version": "1.0.1-beta.1633013080",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",

@@ -1,6 +1,6 @@
 var { WebServer } = require("./index.js")
 var server = new WebServer({
-  dir: "./lib",
+  dir: "./",
   port: 3000
 })
 

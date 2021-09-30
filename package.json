@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.1-beta.1633013080",
+  "version": "1.0.1",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": ">=12.16.1"
+    "node": ">=12.0.0"
   },
   "engineStrict": true
 }

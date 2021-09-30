@@ -1,5 +1,7 @@
 # lite-web-server
 
+![test](https://img.shields.io/npm/dt/lite-web-server)
+
 The npm package to create simple web server.
 
 This will load files from `./public/` directory if it's not specified.

@@ -1,6 +1,6 @@
 # lite-web-server
 
-[![TotalDownloads](https://img.shields.io/npm/dt/lite-web-server)](https://npmjs.com/package/lite-web-server) 
+[![TotalDownloads](https://img.shields.io/npm/dt/lite-web-server)](https://npmjs.com/package/lite-web-server) [![Build](https://img.shields.io/github/checks-status/chasyumen/lite-web-server/main)](https://github.com/chasyumen/lite-web-server)
 
 The npm package to create simple web server.
 

@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.2-beta.1633053420",
+  "version": "1.0.2-beta.1633100820",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",
@@ -26,5 +26,8 @@
   "private": false,
   "engines": {
     "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "better-docs": "^2.3.2"
   }
 }

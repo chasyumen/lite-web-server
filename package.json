@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.2",
+  "version": "1.0.2-beta.1633046500",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",
@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node example.js",
     "main": "node index.js",
-    "test": "node example.js"
+    "test": "node"
   },
   "repository": {
     "type": "git",

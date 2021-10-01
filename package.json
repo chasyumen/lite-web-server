@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node example.js",
     "main": "node index.js",
-    "test": "node"
+    "test": "node check.js"
   },
   "repository": {
     "type": "git",

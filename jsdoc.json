@@ -1,0 +1,48 @@
+{
+    "plugins": ["plugins/markdown"],
+    "recurseDepth": 10,
+    "source": {
+        "include": ["./lib"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|out/|docs)"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "search": true,
+        "default": {
+            "staticFiles": {
+              "include": []
+            }
+        },
+        "better-docs": {
+            "name": "lite-web-server v1.0.2",
+            "title": "lite-web-server Documentation",
+            "css": "/style.css",
+            "trackingCode": "<!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>",
+	        "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Top Page",
+                    "href": "https://lite-web-server.js.org/"
+                },
+                {
+                    "label": "Github",
+                    "href": "https://github.com/chasyumen/lite-web-server"
+                },
+                {
+                    "label": "NPM",
+                    "href": "https://www.npmjs.com/package/lite-web-server"
+                }
+            ]
+        }
+    }
+}

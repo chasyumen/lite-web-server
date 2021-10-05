@@ -1,11 +1,13 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.3-beta.1633443720",
+  "version": "1.0.3",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",
     "http",
-    "web-server"
+    "web-server",
+    "server",
+    "web"
   ],
   "homepage": "https://lite-web-server.js.org/",
   "bugs": {

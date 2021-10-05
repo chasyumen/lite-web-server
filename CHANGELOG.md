@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.3) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.3))
+
+- Accepting only "GET" request from this version.
+
 ## 1.0.2 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.2) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.2))
 
 - Published [docs](https://lite-web-server.js.org/)

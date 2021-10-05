@@ -10,6 +10,8 @@ This will load files from `./public/` directory if it's not specified.
 
 [Github Repository](https://github.com/chasyumen/lite-web-server)
 
+[NPM](https://npmjs.com/package/lite-web-server)
+
 
 ## Install
 ```

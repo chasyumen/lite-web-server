@@ -24,7 +24,7 @@
             }
         },
         "better-docs": {
-            "name": "lite-web-server v1.0.2",
+            "name": "lite-web-server v1.0.3-dev.1633396320",
             "title": "lite-web-server Documentation",
             "css": "/style.css",
             "trackingCode": "<!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>",

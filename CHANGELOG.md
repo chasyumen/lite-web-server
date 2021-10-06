@@ -2,9 +2,13 @@
 
 ## 1.0.10 (npm/Github)
 
+### Added
+
+- You can specify the file to load as a home page. (If it's not specified, it will load "/index.html")
+
 ### Fixed
 
-- Supports /index.html in all directory.
+- Loads /index.html when requested directory page. (If it's not specified.)
 
 ## 1.0.9 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.9) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.9))
 

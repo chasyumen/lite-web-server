@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "creates simple web server.",
   "dependencies": {
     "mime-db": "1.46.0"

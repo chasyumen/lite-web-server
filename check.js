@@ -8,5 +8,5 @@ var server = new WebServer({
   req405error: "This page shows that you sent a request with incorrect method!"
 });
 
-var filename = "./check.js"
-var filetype = GetFileType(filename)
+//var filename = "./check.js"
+//var filetype = GetFileType(filename)

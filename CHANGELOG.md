@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.8 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.7) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.7))
+
+- Fixed [option.acceptonlyget](https://github.com/chasyumen/lite-web-server/issues/7)
+
 ## 1.0.5 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.5) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.5))
 
 - GetFileType bug fixed.

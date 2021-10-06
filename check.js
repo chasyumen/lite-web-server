@@ -1,4 +1,5 @@
-var { WebServer, /*GetFileType*/ } = require("./index.js"); //this file loads ./lib/index.js
+const mimetypes = require("mime-types");
+var { WebServer, GetFileType } = require("./index.js"); //this file loads ./lib/index.js
 var server = new WebServer({
   dir: "./",
   port: 3000,

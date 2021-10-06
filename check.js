@@ -1,6 +1,5 @@
-const mimetypes = require("mime-types");
-var { WebServer, GetFileType } = require("./index.js"); //this file loads ./lib/index.js
-var server = new WebServer({
+var index = require("./lib/index.js"); //this file loads ./lib/index.js
+var server = new index.WebServer({
   dir: "./",
   port: 3000,
   acceptonlyget: true,
@@ -8,5 +7,6 @@ var server = new WebServer({
   req405error: "This page shows that you sent a request with incorrect method!"
 });
 
-//var filename = "./check.js"
-//var filetype = GetFileType(filename)
+var filename = "./check.html"
+var filetype = index.GetFileType(filename)
+

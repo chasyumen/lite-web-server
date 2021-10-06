@@ -2,7 +2,8 @@
     "plugins": ["plugins/markdown"],
     "recurseDepth": 10,
     "source": {
-        "include": ["./lib"],
+        "include": ["./lib", "./lib/GetFileType/index.js"],
+        "exclude": ["./lib/GetFileType/mime-types.js","./lib/GetFileType/type-db.js"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|out/|docs)"
     },
@@ -24,7 +25,7 @@
             }
         },
         "better-docs": {
-            "name": "lite-web-server v1.0.8",
+            "name": "lite-web-server v1.0.9",
             "title": "lite-web-server Documentation",
             "css": "/style.css",
             "trackingCode": "<!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>",

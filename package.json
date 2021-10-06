@@ -1,7 +1,10 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.6-beta.1633478160",
+  "version": "1.0.6",
   "description": "creates simple web server.",
+  "dependencies": {
+    "mime-db": "1.46.0"
+  },
   "keywords": [
     "webserver",
     "http",

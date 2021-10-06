@@ -1,6 +1,6 @@
 # Change Log
 
-### 1.0.6-beta.1633478160
+## 1.0.6 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.6) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.6))
 
 - Fixed [option.acceptonlyget](https://github.com/chasyumen/lite-web-server/issues/7)
 

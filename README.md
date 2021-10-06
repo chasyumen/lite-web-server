@@ -23,23 +23,22 @@ npm i lite-web-server
 This server will load files from `./public/` directory.
 
 ```js
-var { WebServer } = require("lite-web-server")
-var server = new WebServer()
+var { WebServer } = require("lite-web-server");
+var server = new WebServer();
 
-server.start()
+server.start();
 ```
 
 If you want to specify the directory to load a file, use the code below.
 
 ```js
-var { WebServer } = require("lite-web-server")
+var { WebServer } = require("lite-web-server");
 var server = new WebServer({
   dir: "./public_html/"
-})
+});
 
-server.start()
+server.start();
 ```
-
 
 
 ## License

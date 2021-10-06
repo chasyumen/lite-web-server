@@ -1,6 +1,6 @@
 # Change Log
 
-### 1.0.6-beta.1633454580
+### 1.0.6-beta.1633478160
 
 - Fixed [option.acceptonlyget](https://github.com/chasyumen/lite-web-server/issues/7)
 

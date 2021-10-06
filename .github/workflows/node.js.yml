@@ -28,6 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        useLockFile: false
     - name: Codecov
       uses: codecov/codecov-action@v2
       with:

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.10 (npm/Github)
+
+### Fixed
+
+- Supports /index.html in all directory.
+
 ## 1.0.9 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.9) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.9))
 
 - No longer having dependencies.

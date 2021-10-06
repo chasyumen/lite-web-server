@@ -28,12 +28,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        useLockFile: false
     - name: Codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         flags: unittests
-    - run: npm config set cache /
+#    - run: npm config set cache /
     - name: Cache NPM dependencies
       uses: actions/cache@v1
       with:

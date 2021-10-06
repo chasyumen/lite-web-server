@@ -34,7 +34,7 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         flags: unittests
-    - run: npm config set cache /
+    - run: npm config set cache /node_modules/
     - name: Cache NPM dependencies
       uses: actions/cache@v1
       with:

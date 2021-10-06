@@ -2,7 +2,7 @@
     "plugins": ["plugins/markdown"],
     "recurseDepth": 10,
     "source": {
-        "include": ["./lib"],
+        "include": ["./lib", "./lib/GetFileType/index.js"],
         "exclude": ["./lib/GetFileType/mime-types.js","./lib/GetFileType/type-db.js"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|out/|docs)"

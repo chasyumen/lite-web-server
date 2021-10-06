@@ -1,5 +1,5 @@
-var { WebServer, GetFileType } = require("./lib/index.js"); //this file loads ./lib/index.js
-var server = new WebServer({
+var index = require("./lib/index.js"); //this file loads ./lib/index.js
+var server = new index.WebServer({
   dir: "./",
   port: 3000,
   acceptonlyget: true,
@@ -8,4 +8,4 @@ var server = new WebServer({
 });
 
 var filename = "./check.html"
-var filetype = GetFileType(filename)
+var filetype = index.GetFileType(filename)

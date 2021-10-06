@@ -1,4 +1,4 @@
-var { WebServer, GetFileType } = require("./index.js"); //this file loads ./lib/index.js
+var { WebServer, GetFileType } = require("./lib/index.js"); //this file loads ./lib/index.js
 var server = new WebServer({
   dir: "./",
   port: 3000,

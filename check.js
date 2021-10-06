@@ -9,3 +9,4 @@ var server = new index.WebServer({
 
 var filename = "./check.html"
 var filetype = index.GetFileType(filename)
+

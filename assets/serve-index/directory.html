@@ -75,20 +75,31 @@
     </script>
   </head>
   <body class="directory">
-    <input id="search" type="text" placeholder="Search" autocomplete="off" />
-    <div id="wrapper">
-      <h1><a href="/">~</a>{linked-path}</h1>
-      {files}
-    </div>
-    <section class="section footer">
-      <div class="content has-text-centered">
-          <p>
-              Powered by <a href="https://npmjs.com/package/lite-web-server"><strong>lite-web-server</strong></a>
+    <section class="hero is-info">
+        <div class="hero-body">
+          <p class="title">
+            listing directory {directory}
           </p>
-          <p>
-              <a href="https://github.com/chasyumen/lite-web-server"><strong>Github</strong></a> | <a href="https://lite-web-server.js.org"><strong>Docs</strong></a>
-          </p>
+          <input id="search" type="text" placeholder="Search" autocomplete="off" />
+        </div>
+    </section>
+    <section class="section">
+      <div id="wrapper">
+        <h1><a href="/">~</a>{linked-path}</h1>
+        {files}
       </div>
+    </section>
+    <section class="section footer">
+      <center><div class="content has-text-centered">
+        <br /><br />
+          <p>
+              Powered by <a class="footer_link" href="https://npmjs.com/package/lite-web-server"><strong>lite-web-server</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;Templete html & css by <a class="footer_link" href="https://npmjs.com/package/serve-index"><strong>serve-index</strong></a>
+          </p>
+          <p>
+              <a class="footer_link" href="https://github.com/chasyumen/lite-web-server"><strong>Github</strong></a> | <a class="footer_link" href="https://lite-web-server.js.org"><strong>Docs</strong></a>
+          </p>
+        <br /><br />
+      </div></center>
     </section>
   </body>
 </html>

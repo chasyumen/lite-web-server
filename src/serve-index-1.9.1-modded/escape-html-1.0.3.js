@@ -30,7 +30,7 @@ module.exports = escapeHtml
  * @public
  */
 
-function escapeHtml (string) {
+function escapeHtml(string) {
   var str = '' + string
   var match = matchHtmlRegExp.exec(str)
 

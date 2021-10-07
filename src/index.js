@@ -1,3 +1,5 @@
+'use strict'
+
 const GetFileType = require("./GetFileType/index.js");
 const WebServer = require("./WebServer.js");
 

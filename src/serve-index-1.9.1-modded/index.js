@@ -1,12 +1,14 @@
 /*!
- * serve-index
- * Copyright(c) 2011 Sencha Inc.
- * Copyright(c) 2011 TJ Holowaychuk
- * Copyright(c) 2014-2015 Douglas Christopher Wilson
- * MIT Licensed
- * 
- * Modified by chasyumen (2021)
- */
+* serve-index
+* Copyright(c) 2011 Sencha Inc.
+* Copyright(c) 2011 TJ Holowaychuk
+* Copyright(c) 2014-2015 Douglas Christopher Wilson
+* MIT Licensed
+* 
+* Modified by chasyumen (2021)
+*/
+
+'use strict'
 
 var fs = require('fs')
     , path = require('path')
@@ -23,26 +25,26 @@ var escapeHtml = require("./escape-html-1.0.3.js");
 module.exports = serveIndex;
 
 /*!
- * Icon cache.
- */
+* Icon cache.
+*/
 
 var cache = {};
 
 /*!
- * Default template.
- */
+* Default template.
+*/
 
 var defaultTemplate = join(__dirname, '..', '..', 'assets', 'serve-index', 'directory.html');
 
 /*!
- * Stylesheet.
- */
+* Stylesheet.
+*/
 
 var defaultStylesheet = join(__dirname, '..', '..', 'assets', 'serve-index', 'style.css');
 
 /**
- * Media types and the map for content negotiation.
- */
+* Media types and the map for content negotiation.
+*/
 
 var mediaTypes = [
     'text/html',
@@ -74,7 +76,7 @@ function serveIndex(root, options) {
     var template = opts.template || defaultTemplate;
     var view = opts.view || 'tiles';
 
-    function onrequest(req, res) {
+    async function onrequest(req, res) {
         if (req.method !== 'GET' && req.method !== 'HEAD') {
             //res.statusCode = 'OPTIONS' === req.method ? 200 : 405;
             //res.setHeader('Allow', 'GET, HEAD, OPTIONS');
@@ -87,7 +89,7 @@ function serveIndex(root, options) {
         var dir = getRequestedDir(req);
 
         // bad request
-        if (dir === null) return false;
+        if (dir === null) throw new Error("directory not found.");
 
         // parse URLs
         var originalUrl = parseUrl.original(req);
@@ -97,12 +99,12 @@ function serveIndex(root, options) {
         var path = normalize(join(rootPath, dir));
 
         // null byte(s), bad request
-        if (~path.indexOf('\0')) return false;
+        if (~path.indexOf('\0')) throw new Error("Error");
 
         // malicious path
         if ((path + sep).substr(0, rootPath.length) !== rootPath) {
             //debug('malicious path "%s"', path);
-            return false;
+            throw new Error("Error");
         }
 
         // determine ".." display
@@ -110,19 +112,21 @@ function serveIndex(root, options) {
 
         // check if we have a directory
         //debug('stat "%s"', path);
-        fs.stat(path, function (err, stat) {
-            if (err && err.code === 'ENOENT') {
-                return false;
-            }
+        try {
 
+            var stat = await fs.statSync(path);
+            /*if (err && err.code === 'ENOENT') {
+                throw new Error(err);
+            }
+   
             if (err) {
                 err.status = err.code === 'ENAMETOOLONG'
                     ? 414
                     : 500;
-                return false;
-            }
+                throw new Error(err);
+            }*/
 
-            if (!stat.isDirectory()) return false;
+            if (!stat.isDirectory()) throw new Error("Error");
 
             // fetch files
             //debug('readdir "%s"', path);
@@ -142,7 +146,12 @@ function serveIndex(root, options) {
                 //if (!type) return false;
                 return serveIndex[mediaType["text/html"]](req, res, files, null, originalDir, showUp, icons, path, view, template, stylesheet);
             });
-        });
+        } catch (error) {
+            return false;
+            throw new Error(error)
+        }
+
+
     };
     return onrequest;
 };

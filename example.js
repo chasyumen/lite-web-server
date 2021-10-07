@@ -1,3 +1,5 @@
+'use strict'
+
 var { WebServer } = require("./index.js");
 var server = new WebServer({
   dir: "./",

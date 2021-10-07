@@ -4,7 +4,7 @@
 
 ### Added
 
-- added serve-index features. (Disabled by default)
+- added serve-index features. (Disabled by default) 
 
 ## 1.0.10 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.10) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.10))
 

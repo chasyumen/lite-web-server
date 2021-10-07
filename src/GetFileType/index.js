@@ -1,3 +1,5 @@
+'use strict'
+
 const MimeTypes = require("../mime-types/index.js")
 const path = require('path')
 

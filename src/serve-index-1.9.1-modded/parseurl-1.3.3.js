@@ -14,7 +14,7 @@ var Url = url.Url
 module.exports = parseurl
 module.exports.original = originalurl
 
-function parseurl (req) {
+function parseurl(req) {
   var url = req.url
 
   if (url === undefined) {
@@ -36,7 +36,7 @@ function parseurl (req) {
   return (req._parsedUrl = parsed)
 };
 
-function originalurl (req) {
+function originalurl(req) {
   var url = req.originalUrl
 
   if (typeof url !== 'string') {
@@ -58,7 +58,7 @@ function originalurl (req) {
   return (req._parsedOriginalUrl = parsed)
 };
 
-function fastparse (str) {
+function fastparse(str) {
   if (typeof str !== 'string' || str.charCodeAt(0) !== 0x2f /* / */) {
     return parse(str)
   }
@@ -107,7 +107,7 @@ function fastparse (str) {
   return url
 }
 
-function fresh (url, parsedUrl) {
+function fresh(url, parsedUrl) {
   return typeof parsedUrl === 'object' &&
     parsedUrl !== null &&
     (Url === undefined || parsedUrl instanceof Url) &&

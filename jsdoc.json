@@ -3,7 +3,12 @@
     "recurseDepth": 10,
     "source": {
         "include": ["./src", "./src/GetFileType/index.js"],
-        "exclude": ["./src/mime-types/","./src/GetFileType/type-db.js","./src/serve-index-1.9.1-modded/"],
+        "exclude": [
+            "./src/mime-types/",
+            "./src/GetFileType/type-db.js",
+            "./src/serve-index-1.9.1-modded/",
+            "./src/serve-index-1.9.1-modded/batch-0.6.1.js"
+        ],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|out/|docs|assets/)"
     },
@@ -25,7 +30,7 @@
             }
         },
         "better-docs": {
-            "name": "lite-web-server v1.1.0",
+            "name": "lite-web-server v1.1.0-beta.1633645140",
             "title": "lite-web-server Documentation",
             "css": "/style.css",
             "trackingCode": "<!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>",

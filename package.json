@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.0.10-beta.1633569780",
+  "version": "1.0.10",
   "description": "creates simple web server.",
   "keywords": [
     "webserver",

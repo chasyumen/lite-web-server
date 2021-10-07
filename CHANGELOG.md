@@ -9,6 +9,7 @@
 ### Changed
 
 - options.req405error and options.notfound are changed to options.errordocument._404 and options.errordocument._405
+- default 404 and 405 pages are improved.
 
 ### Fixed
 

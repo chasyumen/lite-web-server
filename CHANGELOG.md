@@ -6,6 +6,10 @@
 
 - You can specify the file to load as a home page. (If it's not specified, it will load "/index.html")
 
+### Changed
+
+- options.req405error and options.notfound are changed to options.errordocument._404 and options.errordocument._405
+
 ### Fixed
 
 - Loads /index.html when requested directory page. (If it's not specified.)

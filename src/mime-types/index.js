@@ -1,5 +1,5 @@
 /*!
- * mime-types
+ * mime-types 2.1.33
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2015 Douglas Christopher Wilson
  * MIT Licensed

@@ -1,4 +1,4 @@
-var index = require("./lib/index.js"); //this file loads ./lib/index.js
+var index = require("./src/index.js"); //this file loads ./lib/index.js
 var server = new index.WebServer({
   dir: "./",
   port: 3000,
@@ -7,6 +7,6 @@ var server = new index.WebServer({
   req405error: "This page shows that you sent a request with incorrect method!"
 });
 
-var filename = "./check.html"
-var filetype = index.GetFileType(filename)
+var filename = "./check.html";
+var filetype = index.GetFileType(filename);
 

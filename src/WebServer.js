@@ -2,6 +2,7 @@ const http = require('http');
 const path = require('path');
 const fs = require("fs");
 const GetFileType = require("./GetFileType/index.js");
+const serveIndex = require("./serve-index-1.9.1-modded/index.js")
 
 /**
  * WebServer's options.
@@ -37,19 +38,19 @@ class WebServer {
         if (!options.errordocument) {
           options.errordocument = {};
         }
-        var error_doc404 = options.errordocument._404 || `${__dirname}/assets/def_pages/404.html`;
-        var error_doc405 = options.errordocument._405 || `${__dirname}/assets/def_pages/405.html`;
+        var error_doc404 = options.errordocument._404 || `${__dirname}/../assets/def_pages/404.html`;
+        var error_doc405 = options.errordocument._405 || `${__dirname}/../assets/def_pages/405.html`;
         try {
           var _404 = fs.readFileSync(error_doc404);
         } catch (error) {
           console.error(new Error(`Invailed 404 error file location "${error_doc404}". Default location will used.`));
-          options.errordocument._404 = `${__dirname}/assets/def_pages/404.html`;
+          options.errordocument._404 = `${__dirname}/../assets/def_pages/404.html`;
         }
         try {
           var _405 = fs.readFileSync(error_doc405);
         } catch (error) {
           console.error(new Error(`Invailed 405 error file location "${error_doc405}". Default location will used.`));
-          options.errordocument._405 = `${__dirname}/assets/def_pages/405.html`;
+          options.errordocument._405 = `${__dirname}/../assets/def_pages/405.html`;
         }
       }
       return options;
@@ -75,8 +76,8 @@ class WebServer {
           rootfile: "/index.html",
           //req405error: `<!DOCTYPE html>\n<html>\n<head>\n<title>405 Method Not Allowed</title>\n</head>\n<body>\n<center>\n<h1>405 Method Not Allowed</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
           errordocument: {
-            _404: `${__dirname}/assets/def_pages/404.html`,
-            _405: `${__dirname}/assets/def_pages/405.html`
+            _404: `${__dirname}/../assets/def_pages/404.html`,
+            _405: `${__dirname}/../assets/def_pages/405.html`
           }
         }
       } else {
@@ -115,8 +116,8 @@ class WebServer {
           rootfile: opt.rootfile || "/index.html",
           //req405error: opt.req405error || `<!DOCTYPE html>\n<html>\n<head>\n<title>405 Method Not Allowed</title>\n</head>\n<body>\n<center>\n<h1>405 Method Not Allowed</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
           errordocument: {
-            _404: opt.errordocument._404 || `${__dirname}/assets/def_pages/404.html`,
-            _405: opt.errordocument._405 || `${__dirname}/assets/def_pages/405.html`
+            _404: opt.errordocument._404 || `${__dirname}/../assets/def_pages/404.html`,
+            _405: opt.errordocument._405 || `${__dirname}/../assets/def_pages/405.html`
           }
         }
       }
@@ -155,10 +156,31 @@ class WebServer {
             res.end(file);
           } catch (error) {
             try {
-              var read_file = await fs.readFileSync(options.errordocument._404).toString();
-              var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
-              res.writeHead(404, { "Content-Type": "text/html" });
-              res.end(file);
+              try {
+                var _loaddirurl = options.directory+"/";
+                if (url.endsWith("/")) {
+                  var __loaddirurl = _loaddirurl
+                } else {
+                  //console.log(req)
+                  res.writeHead(302, {location: `${req.url}/`,});
+                  res.end();
+                  return;
+                  //var loaddirurl = _loaddirurl + "/"
+                }
+                var loaddirurl = `${__loaddirurl}`
+                //console.log(loaddirurl)
+                var returns = serveIndex(loaddirurl, {icons: true, view: "details"})(req, res);
+              } catch (error) {
+                var returns = false;
+              }
+              //console.log(returns)
+              if (returns === false) {
+                var read_file = await fs.readFileSync(options.errordocument._404).toString();
+                var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
+                res.writeHead(404, { "Content-Type": "text/html" });
+                res.end(file);
+              }
+              
             } catch (error) {
               res.writeHead(500, { "Content-Type": "text/html" });
               res.end("<center><h1>Internal Server Error</h1></center>");

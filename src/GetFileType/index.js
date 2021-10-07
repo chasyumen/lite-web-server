@@ -1,4 +1,4 @@
-const MimeTypes = require(__dirname+"/mime-types.js")
+const MimeTypes = require("../mime-types/index.js")
 const path = require('path')
 
 /**

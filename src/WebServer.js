@@ -15,8 +15,23 @@ const serveIndex = require("./serve-index-1.9.1-modded/index.js")
  * @property {boolean} [options.acceptonlyget=true] - Only accepts get request.
  * @property {boolean} [options.useindexhtml=true] - If it's true, returns ./index.html file when requested directory.
  * @property {string} [options.rootfile=/index.html] - You can specify a file to load as a top page. (Please specify files in the published directory.)
+ * @property {object} [options.errordocument]
  * @property {string} [options.errordocument._404=`${__dirname}/assets/def_pages/404.html`] - Html file path to respond on the request methods other than GET.
  * @property {string} [options.errordocument._405=`${__dirname}/assets/def_pages/405.html`] - Html file path to respond on not found.
+ * @example <caption>All Options Example</caption>
+ * const { WebServer } = require("lite-web-server");
+ * var server = new WebServer({
+ *   port: 3000, //port
+ *   directory: "./public", //directory to publish
+ *   serveindex: false, //disable serve-Index feature.
+ *   acceptonlyget: true, //returns 405 to the request with method other than GET.
+ *   useindexhtml: true, //returns /index.html on that directory when the directory was requested.
+ *   rootfile: "/index.html", //the file that is used as the home page.
+ *   errordocument: {
+ *     _404: `./public/404.html`, //File path to use as a 404 error page.
+ *     _405: `./public/405.html`, //File path to use as a 405 error page.
+ *   }
+ * });
  */
 
 /**
@@ -25,10 +40,24 @@ const serveIndex = require("./serve-index-1.9.1-modded/index.js")
  * @param {WebServerOptions} [options] - WebServer Options.
  * @returns {WebServer} 
  * @example <caption>Simple example</caption>
- * const {WebServer} = require("lite-web-server");
+ * const { WebServer } = require("lite-web-server");
  * var server = new WebServer();
  * 
  * server.start();
+ * @example <caption>Options Example</caption>
+ * const { WebServer } = require("lite-web-server");
+ * var server = new WebServer({
+ *   port: 3000, //port
+ *   directory: "./public", //directory to publish
+ *   serveindex: false, //disable serve-Index feature.
+ *   acceptonlyget: true, //returns 405 to the request with method other than GET.
+ *   useindexhtml: true, //returns /index.html on that directory when the directory was requested.
+ *   rootfile: "/index.html", //the file that is used as the home page.
+ *   errordocument: {
+ *     _404: `./public/404.html`, //File path to use as a 404 error page.
+ *     _405: `./public/405.html`, //File path to use as a 405 error page.
+ *   }
+ * });
  */
 
 class WebServer {

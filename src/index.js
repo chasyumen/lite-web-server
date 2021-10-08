@@ -11,5 +11,6 @@ const WebServer = require("./WebServer.js");
 
 module.exports = {
   WebServer: WebServer,
-  GetFileType: GetFileType
+  GetFileType: GetFileType,
+  version: require('../package.json').version
 }

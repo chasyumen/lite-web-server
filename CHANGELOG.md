@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.0) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.0))
+
+### Added
+
+- added serve-index features. (Disabled by default) 
+
 ## 1.0.10 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.0.10) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.0.10))
 
 ### Added

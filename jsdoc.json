@@ -2,10 +2,15 @@
     "plugins": ["plugins/markdown"],
     "recurseDepth": 10,
     "source": {
-        "include": ["./lib", "./lib/GetFileType/index.js"],
-        "exclude": ["./lib/GetFileType/mime-types.js","./lib/GetFileType/type-db.js"],
+        "include": ["./src", "./src/GetFileType/index.js"],
+        "exclude": [
+            "./src/mime-types/",
+            "./src/GetFileType/type-db.js",
+            "./src/serve-index-1.9.1-modded/",
+            "./src/serve-index-1.9.1-modded/batch-0.6.1.js"
+        ],
         "includePattern": ".js$",
-        "excludePattern": "(node_modules/|out/|docs)"
+        "excludePattern": "(node_modules/|out/|docs|assets/)"
     },
     "sourceType": "module",
     "tags": {
@@ -25,7 +30,7 @@
             }
         },
         "better-docs": {
-            "name": "lite-web-server v1.0.10",
+            "name": "lite-web-server v1.1.0",
             "title": "lite-web-server Documentation",
             "css": "/style.css",
             "trackingCode": "<!-- Global site tag (gtag.js) - Google Analytics --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>",

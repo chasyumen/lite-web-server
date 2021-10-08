@@ -12,6 +12,8 @@ This will load files from `./public/` directory if it's not specified.
 
 [NPM](https://npmjs.com/package/lite-web-server)
 
+[Simple Example Usage](https://gist.github.com/chasyumen/b96573602863354cedb2df963bbff425)
+
 
 ## Install
 ```

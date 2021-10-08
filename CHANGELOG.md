@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.1.1 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.1) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.1))
+
+### Changed
+
+- icon assets have been changed.
+
+### Fixed
+
+- Fixed a decode URL bug when load directory or files.
+
 ## 1.1.0 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.0) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.0))
 
 ### Added

@@ -1,3 +1,9 @@
+/*
+    lite-web-server
+    Copyright (c) 2021 chasyumen
+    MIT Licensed
+*/
+
 'use strict'
 
 const GetFileType = require("./GetFileType/index.js");

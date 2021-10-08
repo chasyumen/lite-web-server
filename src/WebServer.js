@@ -1,3 +1,12 @@
+/*
+    lite-web-server
+    Copyright (c) 2021 chasyumen
+    MIT Licensed
+*/
+
+'use strict'
+
+
 const http = require('http');
 const path = require('path');
 const fs = require("fs");
@@ -177,7 +186,7 @@ class WebServer {
               return res.end("<center><h1>Internal Server Error</h1></center>");
             }
           }
-          var url = req.url;
+          var url = decodeURIComponent(req.url);
           //console.log(url);
           if (url == "/") {
             var filedir = `${options.directory}${options.rootfile}`;

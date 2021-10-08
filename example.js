@@ -1,3 +1,9 @@
+/*
+    lite-web-server
+    Copyright (c) 2021 chasyumen
+    MIT Licensed
+*/
+
 'use strict'
 
 var { WebServer } = require("./index.js");

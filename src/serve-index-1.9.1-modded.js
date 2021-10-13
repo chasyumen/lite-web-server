@@ -35,13 +35,13 @@ var cache = {};
 * Default template.
 */
 
-var defaultTemplate = join(__dirname, '..', '..', 'assets', 'serve-index', 'directory.html');
+var defaultTemplate = join(__dirname, '..', 'assets', 'serve-index', 'directory.html');
 
 /*!
 * Stylesheet.
 */
 
-var defaultStylesheet = join(__dirname, '..', '..', 'assets', 'serve-index', 'style.css');
+var defaultStylesheet = join(__dirname, '..', 'assets', 'serve-index', 'style.css');
 
 /**
 * Media types and the map for content negotiation.
@@ -87,7 +87,7 @@ function serveIndex(root, options) {
         }
 
         // get dir
-        var dir = url;//getRequestedDir(req);
+        var dir = decodeURIComponent(url);//getRequestedDir(req);
 
         // bad request
         if (dir === null) throw new Error("directory not found.");
@@ -275,7 +275,7 @@ function iconStyle(files, useIcons) {
 
 function load(icon) {
     if (cache[icon]) return cache[icon];
-    return cache[icon] = JSON.parse(fs.readFileSync(__dirname + '/../../assets/serve-index/icons.json'))[icon]
+    return cache[icon] = JSON.parse(fs.readFileSync(__dirname + '/../assets/serve-index/icons.json'))[icon]
 }
 
 function iconLookup(filename) {

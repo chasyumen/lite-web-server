@@ -12,7 +12,7 @@
 var url = require('url')
 var parse = url.parse
 var Url = url.Url
-var safeurl = require("./safe-url.js")
+var safeurl = require("./safe-url.js");
 
 module.exports = parseurl
 module.exports.original = originalurl

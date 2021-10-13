@@ -13,6 +13,7 @@ const fs = require("fs");
 const EventEmitter = require('events').EventEmitter;
 const GetFileType = require("./GetFileType/index.js");
 const serveIndex = require("./serve-index-1.9.1-modded.js");
+const safeurl = require("./safe-url.js");
 
 const Events = {
   DEBUG: "debug",
@@ -198,7 +199,8 @@ class WebServer {
               return res.end("<center><h1>Internal Server Error</h1></center>");
             }
           }
-          var url = decodeURIComponent(req.url);
+          var _url = decodeURIComponent(req.url);
+          var url = safeurl(_url);
           //console.log(url);
           if (url == "/") {
             var filedir = `${options.directory}${options.rootfile}`;
@@ -207,6 +209,7 @@ class WebServer {
           } else {
             var filedir = `${options.directory}${url}`;
           }
+
           var custom_mode = false;
           if (custom_mode == false) {
             try {
@@ -231,9 +234,12 @@ class WebServer {
                     try {
                       //console.log(_loaddirurl+url.slice(1))
                       fs.readdirSync(_loaddirurl + url.slice(1))
-                      res.writeHead(302, { location: `${req.url}/`, });
-                      res.end();
-                      return;
+                      if (url == `${url}/`) {
+
+                        res.writeHead(302, { location: `${url}/`, });
+                        res.end();
+                        return;
+                      }
                     } catch (error) {
                       throw new Error(error)
                     }

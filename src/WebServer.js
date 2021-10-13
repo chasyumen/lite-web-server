@@ -199,8 +199,8 @@ class WebServer extends EventEmitter {
               return res.end("<center><h1>Internal Server Error</h1></center>");
             }
           }
-          var _url = decodeURIComponent(req.url);
-          var url = safeurl(_url);
+          var _url = decodeURIComponent(req.url).slice(1);
+          var url = safeurl("/"+_url);
           //console.log(url);
           if (url == "/") {
             var filedir = `${options.directory}${options.rootfile}`;

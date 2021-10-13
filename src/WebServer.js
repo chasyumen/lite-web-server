@@ -257,7 +257,7 @@ class WebServer extends EventEmitter {
                       return;
                     }
                     var serveindex = serveIndex(loaddirurl, { icons: true, view: "details" });
-                    serveindex(req, res);
+                    serveindex(req, res, url);
                   } catch (error) {
                     throw new Error(error)
                   }

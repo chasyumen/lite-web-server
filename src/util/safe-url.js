@@ -7,7 +7,7 @@
  * const { SafeUrl } = require("lite-web-server");
  */
 
- function SafeUrl(url) {
+function SafeUrl(url) {
     if (!typeof url == "string") {
         throw new Error("Invalid parameter specified.");
     }

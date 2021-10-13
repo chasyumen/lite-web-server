@@ -77,7 +77,7 @@ function serveIndex(root, options) {
     var template = opts.template || defaultTemplate;
     var view = opts.view || 'tiles';
 
-    async function onrequest(req, res) {
+    async function onrequest(req, res, url) {
         if (req.method !== 'GET' && req.method !== 'HEAD') {
             //res.statusCode = 'OPTIONS' === req.method ? 200 : 405;
             //res.setHeader('Allow', 'GET, HEAD, OPTIONS');
@@ -87,7 +87,7 @@ function serveIndex(root, options) {
         }
 
         // get dir
-        var dir = getRequestedDir(req);
+        var dir = url;//getRequestedDir(req);
 
         // bad request
         if (dir === null) throw new Error("directory not found.");

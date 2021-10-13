@@ -12,12 +12,13 @@
 var url = require('url')
 var parse = url.parse
 var Url = url.Url
+var safeurl = require("./safe-url.js")
 
 module.exports = parseurl
 module.exports.original = originalurl
 
 function parseurl(req) {
-  var url = req.url.toString().replace(/\/\.\./g, "").replace(/\.\./g, "");
+  var url = safeurl(req.url);
 
   if (url === undefined) {
     // URL is undefined

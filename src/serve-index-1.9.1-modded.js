@@ -21,7 +21,7 @@ var parseUrl = require("./util/parseurl-1.3.3.js");
 var Batch = require('./util/batch-0.6.1.js');
 var mime = require('./mime-types/index.js');
 var escapeHtml = require("./util/escape-html-1.0.3.js");
-var safeurl = require("./safe-url.js")
+var safeurl = require("./util/safe-url.js")
 
 module.exports = serveIndex;
 

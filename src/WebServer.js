@@ -77,9 +77,9 @@ const Events = {
  * });
  */
 
-class WebServer {
+class WebServer extends EventEmitter {
   constructor(opts) {
-    //super();
+    super();
     this.opts = run(opts);
     function run(options) {
       if (options) {

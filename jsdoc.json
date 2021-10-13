@@ -26,8 +26,7 @@
         "allowUnknownTags": true,
         "dictionaries": [
             "jsdoc",
-            "closure",
-            "category"
+            "closure"
         ]
     },
     "templates": {

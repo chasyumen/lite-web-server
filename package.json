@@ -14,7 +14,12 @@
     "http",
     "web-server",
     "server",
-    "web"
+    "web",
+    "lite-web-server",
+    "lite-server",
+    "litewebserver",
+    "liteserver",
+    "httpserver"
   ],
   "homepage": "https://lite-web-server.js.org/",
   "bugs": {

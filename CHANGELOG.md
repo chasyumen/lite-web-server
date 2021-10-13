@@ -2,6 +2,10 @@
 
 ## 1.1.2 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.2) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.2))
 
+### Added
+
+- added "SafeUrl" method.
+
 ### Changed
 
 - All security threats are now fixed.

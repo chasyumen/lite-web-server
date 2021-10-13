@@ -13,6 +13,6 @@ const safeurl = require("./util/safe-url.js");
 module.exports = {
   WebServer: WebServer,
   GetFileType: GetFileType,
-  safeurl: safeurl,
+  SafeUrl: safeurl,
   version: require('../package.json').version
 }

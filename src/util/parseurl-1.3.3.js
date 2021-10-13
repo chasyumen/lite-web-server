@@ -18,7 +18,7 @@ module.exports.original = originalurl
 
 function parseurl(req) {
   var _url = req.url
-  var url = _url.replace(/\/../g, "");
+  var url = _url.replace(/\/\.\.\//g, "")
 
   if (url === undefined) {
     // URL is undefined

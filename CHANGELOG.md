@@ -1,14 +1,11 @@
 # Change Log
 
-## 1.1.2 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.2) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.2))
+## 1.2.0 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.2.0) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.2.0))
 
 ### Added
 
 - added "SafeUrl" method.
-
-### Changed
-
-- All security threats are now fixed.
+- added events to webserver class.
 
 ## 1.1.1 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.1) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.1))
 

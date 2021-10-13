@@ -366,11 +366,23 @@ class WebServer extends EventEmitter {
 module.exports = WebServer
 
 /**
+ * Debug messages.
+ * 
+ * @event WebServer#debug
+ * @type {object}
+ * @property {string} - Debug log message.
+ * @example 
+ * server.on("debug", msg => console.log(msg))
+ */
+
+/**
  * WebServer request event for logging.
  * 
  * @event WebServer#requestlog
  * @type {object}
  * @property {WebServer~WebServerRequestLog}
+ * @example 
+ * server.on("requestlog", requestlog => console.log(requestlog.raw))
  */
 
 /**

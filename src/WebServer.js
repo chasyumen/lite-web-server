@@ -10,8 +10,15 @@
 const http = require('http');
 const path = require('path');
 const fs = require("fs");
+const EventEmitter = require('events').EventEmitter;
 const GetFileType = require("./GetFileType/index.js");
-const serveIndex = require("./serve-index-1.9.1-modded/index.js")
+const serveIndex = require("./serve-index-1.9.1-modded.js");
+
+const Events = {
+  DEBUG: "debug",
+  REQUEST: "request",
+  REQUEST_LOG: "log"
+}; // extends EventEmitter
 
 /**
  * WebServer's options.
@@ -71,6 +78,7 @@ const serveIndex = require("./serve-index-1.9.1-modded/index.js")
 
 class WebServer {
   constructor(opts) {
+    //super();
     this.opts = run(opts);
     function run(options) {
       if (options) {
@@ -174,8 +182,12 @@ class WebServer {
         reject(new Error(`Please create directory "${options.directory}" first.`));
         return;
       }
+
       try {
         var httpserver = http.createServer(async function (req, res) {
+          //var date = new Date();
+          //var parsed_date = `${date.getUTCDate}`;
+          //this.emit(Events.REQUEST_LOG, `[${parsed_date}] ${req.method} | ${req.url}`);
           if (!(req.method.toUpperCase() == "GET") && options.acceptonlyget == true) {
             try {
               var read_file = await fs.readFileSync(options.errordocument._405).toString();
@@ -195,65 +207,71 @@ class WebServer {
           } else {
             var filedir = `${options.directory}${url}`;
           }
-          try {
-            var httpcontent = (await GetFileType(filedir.toString())) || "text/plain";
-            var file = await fs.readFileSync(filedir);
-            res.writeHead(200, { "Content-Type": httpcontent });
-            res.end(file);
-          } catch (error) {
+          var custom_mode = false;
+          if (custom_mode == false) {
             try {
-              try {
-                var _loaddirurl = options.directory + "/";
-                if (url.endsWith("/")) {
-                  var __loaddirurl = _loaddirurl
-                  try {
-                    //console.log(_loaddirurl+url.slice(1))
-                    fs.readdirSync(_loaddirurl + url.slice(1))
-                  } catch (error) {
-                    throw new Error(error)
-                  }
-                } else {
-                  //console.log(req)
-                  try {
-                    //console.log(_loaddirurl+url.slice(1))
-                    fs.readdirSync(_loaddirurl + url.slice(1))
-                    res.writeHead(302, { location: `${req.url}/`, });
-                    res.end();
-                    return;
-                  } catch (error) {
-                    throw new Error(error)
-                  }
-
-                  //var loaddirurl = _loaddirurl + "/"
-                }
-                var loaddirurl = `${__loaddirurl}`
-                //console.log(loaddirurl)
-                try {
-                  if (options.serveindex === false) {
-                    var read_file = await fs.readFileSync(options.errordocument._404).toString();
-                    var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
-                    res.writeHead(404, { "Content-Type": "text/html" });
-                    res.end(file);
-                    return;
-                  }
-                  var serveindex = serveIndex(loaddirurl, { icons: true, view: "details" });
-                  serveindex(req, res);
-                } catch (error) {
-                  throw new Error(error)
-                }
-
-              } catch (error) {
-                var read_file = await fs.readFileSync(options.errordocument._404).toString();
-                var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
-                res.writeHead(404, { "Content-Type": "text/html" });
-                res.end(file);
-              }
+              var httpcontent = (await GetFileType(filedir.toString())) || "text/plain";
+              var file = await fs.readFileSync(filedir);
+              res.writeHead(200, { "Content-Type": httpcontent });
+              res.end(file);
             } catch (error) {
-              res.writeHead(500, { "Content-Type": "text/html" });
-              res.end("<center><h1>Internal Server Error</h1></center>");
+              try {
+                try {
+                  var _loaddirurl = options.directory + "/";
+                  if (url.endsWith("/")) {
+                    var __loaddirurl = _loaddirurl
+                    try {
+                      //console.log(_loaddirurl+url.slice(1))
+                      fs.readdirSync(_loaddirurl + url.slice(1))
+                    } catch (error) {
+                      throw new Error(error)
+                    }
+                  } else {
+                    //console.log(req)
+                    try {
+                      //console.log(_loaddirurl+url.slice(1))
+                      fs.readdirSync(_loaddirurl + url.slice(1))
+                      res.writeHead(302, { location: `${req.url}/`, });
+                      res.end();
+                      return;
+                    } catch (error) {
+                      throw new Error(error)
+                    }
+
+                    //var loaddirurl = _loaddirurl + "/"
+                  }
+                  var loaddirurl = `${__loaddirurl}`
+                  //console.log(loaddirurl)
+                  try {
+                    if (options.serveindex === false) {
+                      var read_file = await fs.readFileSync(options.errordocument._404).toString();
+                      var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
+                      res.writeHead(404, { "Content-Type": "text/html" });
+                      res.end(file);
+                      return;
+                    }
+                    var serveindex = serveIndex(loaddirurl, { icons: true, view: "details" });
+                    serveindex(req, res);
+                  } catch (error) {
+                    throw new Error(error)
+                  }
+
+                } catch (error) {
+                  var read_file = await fs.readFileSync(options.errordocument._404).toString();
+                  var file = read_file.replace(/<!--\${404URL}-->/g, `${url}`);
+                  res.writeHead(404, { "Content-Type": "text/html" });
+                  res.end(file);
+                }
+              } catch (error) {
+                res.writeHead(500, { "Content-Type": "text/html" });
+                res.end("<center><h1>Internal Server Error</h1></center>");
+              }
+              //console.log(error)
             }
-            //console.log(error)
+          } else {
+            //this.emit(Events.REQUEST, (req, res, primary_html, primary_status_code));
           }
+
           //fs.Dir.readSync(options.directory+url)
           //console.log(options.directory)
         }).listen(options.port);

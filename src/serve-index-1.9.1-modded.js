@@ -17,10 +17,10 @@ var fs = require('fs')
     , extname = path.extname
     , join = path.join;
 var resolve = require('path').resolve;
-var parseUrl = require("./parseurl-1.3.3.js");
-var Batch = require('./batch-0.6.1.js');
-var mime = require('../mime-types/index.js');
-var escapeHtml = require("./escape-html-1.0.3.js");
+var parseUrl = require("./util/parseurl-1.3.3.js");
+var Batch = require('./util/batch-0.6.1.js');
+var mime = require('./mime-types/index.js');
+var escapeHtml = require("./util/escape-html-1.0.3.js");
 
 module.exports = serveIndex;
 

@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.2.0 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.2.0) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.2.0))
+
+### Added
+
+- Added event emitter so you can log all requests.
+
+### Changed
+
+- Directory names are changed.
+
 ## 1.1.1 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.1.1) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.1.1))
 
 ### Changed

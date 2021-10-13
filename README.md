@@ -6,6 +6,8 @@ The npm package to create simple web server.
 
 This will load files from `./public/` directory if it's not specified.
 
+Please support developer by adding star to the [Github Repository](https://github.com/chasyumen/lite-web-server).
+
 [Documantation](https://lite-web-server.js.org/)
 
 [Github Repository](https://github.com/chasyumen/lite-web-server)

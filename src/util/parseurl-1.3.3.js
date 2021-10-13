@@ -3,6 +3,8 @@
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2014-2017 Douglas Christopher Wilson
  * MIT Licensed
+ * 
+ * modded by 2021 chasyumen 
  */
 
 'use strict'

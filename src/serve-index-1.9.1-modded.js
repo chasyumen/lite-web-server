@@ -210,7 +210,7 @@ function fileSort(a, b) {
 
 function getRequestedDir(req) {
     try {
-        var requrl = safeurl(req.url);
+        var requrl = safeurl("/.."+req.url);
         return decodeURIComponent(requrl/*parseUrl(req).pathname*/);
     } catch (e) {
         return null;

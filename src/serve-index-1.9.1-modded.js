@@ -130,7 +130,8 @@ function serveIndex(root, options) {
 
             // fetch files
             //debug('readdir "%s"', path);
-            fs.readdir(path, function (err, files) {
+            var _path = path.replace(/\/../g, "");
+            fs.readdir(_path, function (err, files) {
                 if (err) return false;
                 if (!hidden) files = removeHidden(files);
                 if (filter) files = files.filter(function (filename, index, list) {

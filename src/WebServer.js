@@ -306,7 +306,7 @@ class WebServer extends EventEmitter {
                     try {
                       //console.log(_loaddirurl+url.slice(1))
                       fs.readdirSync(_loaddirurl + url.slice(1))
-                      if (url == `${url}/`) {
+                      if (url+"/" == `${url}/`) {
 
                         res.writeHead(302, { location: `${url}/`, });
                         res.end();

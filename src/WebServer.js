@@ -18,7 +18,7 @@ const safeurl = require("./util/safe-url.js");
 const Events = {
   DEBUG: "debug",
   REQUEST: "request",
-  REQUEST_LOG: "log"
+  REQUEST_LOG: "requestlog"
 }; // extends EventEmitter
 
 /**
@@ -88,22 +88,26 @@ class WebServer extends EventEmitter {
         }
         var error_doc404 = options.errordocument._404 || `${__dirname}/../assets/def_pages/404.html`;
         var error_doc405 = options.errordocument._405 || `${__dirname}/../assets/def_pages/405.html`;
+        var logmode = options.logmode || 1;
         try {
           var _404 = fs.readFileSync(error_doc404);
         } catch (error) {
-          console.error(new Error(`Invailed 404 error file location "${error_doc404}". Default location will used.`));
+          console.error(new Error(`Invalid 404 error file location "${error_doc404}". Default location will used.`));
           options.errordocument._404 = `${__dirname}/../assets/def_pages/404.html`;
         }
         try {
           var _405 = fs.readFileSync(error_doc405);
         } catch (error) {
-          console.error(new Error(`Invailed 405 error file location "${error_doc405}". Default location will used.`));
+          console.error(new Error(`Invalid 405 error file location "${error_doc405}". Default location will used.`));
           options.errordocument._405 = `${__dirname}/../assets/def_pages/405.html`;
+        }
+        if ((!logmode == 1||logmode == 2||logmode == 3)) {
+          console.error(new Error(`Invalid log mode specified. It must be 1, 2 or 3.`));
+          options.logmode = 1;
         }
       }
       return options;
     }
-
   }
 
   /**
@@ -111,6 +115,7 @@ class WebServer extends EventEmitter {
    */
 
   start() {
+    this.emit(Events.DEBUG, `Starting the server...`, {type: "message", message: "Starting the server..."});
     var _this = this;
     return new Promise(async function (resolve, reject) {
       var opt = _this.opts;
@@ -118,12 +123,12 @@ class WebServer extends EventEmitter {
         var options = {
           directory: "./public",
           serveindex: false,
-          //notfound: `<!DOCTYPE html>\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<center>\n<h1>404 Not Found</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
           port: 3000,
           acceptonlyget: true,
           useindexhtml: true,
           rootfile: "/index.html",
-          //req405error: `<!DOCTYPE html>\n<html>\n<head>\n<title>405 Method Not Allowed</title>\n</head>\n<body>\n<center>\n<h1>405 Method Not Allowed</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
+          logmode: 1,
+          logtimezone: 0,
           errordocument: {
             _404: `${__dirname}/../assets/def_pages/404.html`,
             _405: `${__dirname}/../assets/def_pages/405.html`
@@ -158,18 +163,23 @@ class WebServer extends EventEmitter {
         } else {
           var serveindex = false;
         }
+        if (typeof opt.logtimezone == "number") {
+          var logtimezone = opt.logtimezone*3600*1000;
+        } else {
+          var logtimezone = 0;
+        }
         if (!opt.errordocument) {
           opt.errordocument = {};
         }
         var options = {
           directory: dir || "./public",
           serveindex: serveindex,
-          //notfound: opt.notfound || `<!DOCTYPE html>\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<center>\n<h1>404 Not Found</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
           port: opt.port || 3000,
           acceptonlyget: acceptonlyget,
           useindexhtml: useindexhtml,
           rootfile: opt.rootfile || "/index.html",
-          //req405error: opt.req405error || `<!DOCTYPE html>\n<html>\n<head>\n<title>405 Method Not Allowed</title>\n</head>\n<body>\n<center>\n<h1>405 Method Not Allowed</h1>\n</center>\n<hr>\n<center>Node.js lite-web-server</center>\n</body>\n</html>`,
+          logmode: opt.logmode || 1,
+          logtimezone: logtimezone,
           errordocument: {
             _404: opt.errordocument._404 || `${__dirname}/../assets/def_pages/404.html`,
             _405: opt.errordocument._405 || `${__dirname}/../assets/def_pages/405.html`
@@ -186,9 +196,64 @@ class WebServer extends EventEmitter {
 
       try {
         var httpserver = http.createServer(async function (req, res) {
-          //var date = new Date();
-          //var parsed_date = `${date.getUTCDate}`;
-          //this.emit(Events.REQUEST_LOG, `[${parsed_date}] ${req.method} | ${req.url}`);
+          var timestamp = Date.now()+options.logtimezone;
+          var date = new Date(timestamp);
+          var year = date.getUTCFullYear();
+          var _month = (date.getUTCMonth() + 1).toString();
+          if (_month.length == 1) {
+            var month = "0"+_month.toString();
+          } else {
+            var month = _month;
+          }
+          var _day = date.getUTCDate().toString();
+          if (_day.length == 1) {
+            var day = "0"+_day.toString();
+          } else {
+            var day = _day;
+          }
+          var _hour = date.getUTCHours().toString();
+          if (_hour.length == 1) {
+            var hour = "0"+_hour.toString();
+          } else {
+            var hour = _hour;
+          }
+          var _minute = date.getUTCMinutes().toString();
+          if (_minute.length == 1) {
+            var minute = "0"+_minute.toString();
+          } else {
+            var minute = _minute;
+          }
+          var _second = date.getUTCSeconds().toString();
+          if (_second.length == 1) {
+            var second = "0"+_second.toString();
+          } else {
+            var second = _second;
+          }
+          var _milli = date.getUTCMilliseconds().toString();
+          if (_milli.length == 2) {
+            var milli = "0"+_milli.toString();
+          } else if (_milli.length == 1) {
+            var milli = "00"+_milli.toString();
+          } else {
+            var milli = _milli;
+          }
+          if (options.logmode == 1) {
+            var parsed_date = `${month}/${day}/${year} ${hour}:${minute}:${second}.${milli}`;
+          } else if (options.logmode == 2) {
+            var parsed_date = `${year}/${month}/${day} ${hour}:${minute}:${second}.${milli}`;
+          } else if (options.logmode == 3) {
+            var parsed_date = `${hour}:${minute}:${second}.${milli}`;
+          }
+          var returns = `[${parsed_date} REQUEST_LOG] ${req.method} | ${req.url}`;
+          var detail = {
+            method: req.method,
+            url: req.url,
+            requestedAt: date,
+            requestedAtTimestamp: Number(timestamp.toString().slice(0, -3)),
+            raw: returns
+          }
+          _this.emit(Events.REQUEST_LOG, detail);
+
           if (!(req.method.toUpperCase() == "GET") && options.acceptonlyget == true) {
             try {
               var read_file = await fs.readFileSync(options.errordocument._405).toString();

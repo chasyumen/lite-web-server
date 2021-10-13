@@ -18,7 +18,7 @@ const Events = {
   DEBUG: "debug",
   REQUEST: "request",
   REQUEST_LOG: "log"
-}
+}; // extends EventEmitter
 
 /**
  * WebServer's options.
@@ -76,9 +76,9 @@ const Events = {
  * });
  */
 
-class WebServer extends EventEmitter {
+class WebServer {
   constructor(opts) {
-    super();
+    //super();
     this.opts = run(opts);
     function run(options) {
       if (options) {
@@ -185,9 +185,9 @@ class WebServer extends EventEmitter {
 
       try {
         var httpserver = http.createServer(async function (req, res) {
-          var date = new Date();
-          var parsed_date = `${date.getUTCDate}`;
-          this.emit(Events.REQUEST_LOG, `[${parsed_date}] ${req.method} | ${req.url}`);
+          //var date = new Date();
+          //var parsed_date = `${date.getUTCDate}`;
+          //this.emit(Events.REQUEST_LOG, `[${parsed_date}] ${req.method} | ${req.url}`);
           if (!(req.method.toUpperCase() == "GET") && options.acceptonlyget == true) {
             try {
               var read_file = await fs.readFileSync(options.errordocument._405).toString();
@@ -269,7 +269,7 @@ class WebServer extends EventEmitter {
               //console.log(error)
             }
           } else {
-            this.emit(Events.REQUEST, (req, res, primary_html, primary_status_code));
+            //this.emit(Events.REQUEST, (req, res, primary_html, primary_status_code));
           }
 
           //fs.Dir.readSync(options.directory+url)

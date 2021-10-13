@@ -1,8 +1,15 @@
 {
-    "plugins": ["plugins/markdown"],
+    "plugins": [
+        "plugins/markdown", 
+        "node_modules/better-docs/category"
+    ],
     "recurseDepth": 10,
     "source": {
-        "include": ["./src", "./src/GetFileType/index.js", "./src/util/safe-url.js"],
+        "include": [
+            "./src", 
+            "./src/GetFileType/index.js", 
+            "./src/util/safe-url.js"
+        ],
         "exclude": [
             "./src/mime-types",
             "./src/GetFileType/type-db.js",
@@ -19,7 +26,8 @@
         "allowUnknownTags": true,
         "dictionaries": [
             "jsdoc",
-            "closure"
+            "closure",
+            "category"
         ]
     },
     "templates": {

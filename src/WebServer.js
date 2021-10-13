@@ -252,6 +252,13 @@ class WebServer extends EventEmitter {
             requestedAtTimestamp: Number(timestamp.toString().slice(0, -3)),
             raw: returns
           }
+          /**
+            * Emits when the client sent a request to the server.
+            * But you cannot respond to the request from this event.
+            *
+            * @fires WebServer#requestlog
+            */
+
           _this.emit(Events.REQUEST_LOG, detail);
 
           if (!(req.method.toUpperCase() == "GET") && options.acceptonlyget == true) {
@@ -357,3 +364,22 @@ class WebServer extends EventEmitter {
 }
 
 module.exports = WebServer
+
+/**
+ * WebServer request event for logging.
+ * 
+ * @event WebServer#requestlog
+ * @type {object}
+ * @property {WebServerRequestLog}
+ */
+
+/**
+ * @typedef WebServerRequestLog
+ * @type {object}
+ * @property {object} options
+ * @property {Number} options.method - The method that used on request.
+ * @property {string} options.url - Requested URL. 
+ * @property {object} options.requestedAt - Requested time object.
+ * @property {Number} options.requestedAtTimestamp - Requested time in timestamp.
+ * @property {string} options.raw - The string can be used for the output directly.
+ */

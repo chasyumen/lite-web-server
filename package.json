@@ -1,6 +1,6 @@
 {
   "name": "lite-web-server",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "creates simple web server.",
   "devDependencies": {
     "batch": "^0.6.1",

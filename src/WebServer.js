@@ -23,7 +23,7 @@ const Events = {
 
 /**
  * WebServer's options.
- * @typedef WebServerOptions
+ * @typedef WebServer~WebServerOptions
  * @type {object}
  * @property {object} [options]
  * @property {Number} [options.port=3000] - Port to host the page.
@@ -54,7 +54,7 @@ const Events = {
 /**
  * Create a WebServer.
  * @constructor
- * @param {WebServerOptions} [options] - WebServer Options.
+ * @param {WebServer~WebServerOptions} [options] - WebServer Options.
  * @returns {WebServer} 
  * @example <caption>Simple example</caption>
  * const { WebServer } = require("lite-web-server");
@@ -255,7 +255,7 @@ class WebServer extends EventEmitter {
           /**
             * Emits when the client sent a request to the server.
             * But you cannot respond to the request from this event.
-            *
+            * 
             * @fires WebServer#requestlog
             */
 
@@ -370,11 +370,11 @@ module.exports = WebServer
  * 
  * @event WebServer#requestlog
  * @type {object}
- * @property {WebServerRequestLog}
+ * @property {WebServer~WebServerRequestLog}
  */
 
 /**
- * @typedef WebServerRequestLog
+ * @typedef WebServer~WebServerRequestLog
  * @type {object}
  * @property {object} options
  * @property {Number} options.method - The method that used on request.

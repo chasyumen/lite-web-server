@@ -13,7 +13,7 @@ const fs = require("fs");
 const EventEmitter = require('events').EventEmitter;
 const GetFileType = require("./GetFileType/index.js");
 const serveIndex = require("./serve-index-1.9.1-modded.js");
-const safeurl = require("./safe-url.js");
+const safeurl = require("./util/safe-url.js");
 
 const Events = {
   DEBUG: "debug",

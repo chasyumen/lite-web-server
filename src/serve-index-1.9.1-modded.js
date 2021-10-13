@@ -114,8 +114,9 @@ function serveIndex(root, options) {
         // check if we have a directory
         //debug('stat "%s"', path);
         try {
-
-            var stat = await fs.statSync(path);
+            
+            var _path = safeurl(path);
+            var stat = await fs.statSync(_path);
             /*if (err && err.code === 'ENOENT') {
                 throw new Error(err);
             }
@@ -131,7 +132,6 @@ function serveIndex(root, options) {
 
             // fetch files
             //debug('readdir "%s"', path);
-            var _path = safeurl(path);
             fs.readdir(_path, function (err, files) {
                 if (err) return false;
                 if (!hidden) files = removeHidden(files);
@@ -210,6 +210,7 @@ function fileSort(a, b) {
 
 function getRequestedDir(req) {
     try {
+        req.url = safeurl(req.url);
         return decodeURIComponent(parseUrl(req).pathname);
     } catch (e) {
         return null;

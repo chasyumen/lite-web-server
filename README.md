@@ -14,7 +14,7 @@ Please support developer by adding star to the [Github Repository](https://githu
 
 [NPM](https://npmjs.com/package/lite-web-server)
 
-[Simple Example Usage](https://gist.github.com/chasyumen/b96573602863354cedb2df963bbff425)
+[Example Usage](https://gist.github.com/chasyumen/b96573602863354cedb2df963bbff425)
 
 
 ## Install

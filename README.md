@@ -1,4 +1,4 @@
-# [lite-web-server](https://lite-web-server.js.org/)
+# lite-web-server
 
 [![License](https://img.shields.io/npm/l/lite-web-server)](https://github.com/chasyumen/lite-web-server/blob/main/LICENSE) [![Total downloads on NPM](https://img.shields.io/npm/dt/lite-web-server)](https://npmjs.com/package/lite-web-server) [![Monthly commit activity](https://img.shields.io/github/commit-activity/m/chasyumen/lite-web-server)](https://github.com/chasyumen/lite-web-server) [![Node.js CI](https://github.com/chasyumen/lite-web-server/actions/workflows/node.js.yml/badge.svg)](https://github.com/chasyumen/lite-web-server/actions/workflows/node.js.yml)
 

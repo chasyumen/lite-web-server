@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLV7FSE832"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HLV7FSE832'); </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lite-web-server Documentation WebServer.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="/style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">lite-web-server v1.0.10-beta.1633545000</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://lite-web-server.js.org/"
+                        >
+                            Top Page
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/chasyumen/lite-web-server"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/lite-web-server"
+                        >
+                            NPM
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="WebServer.html">WebServer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetFileType">GetFileType</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>WebServer.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const http = require('http');
+const path = require('path');
+const fs = require("fs");
+const GetFileType = require("./GetFileType/index.js");
+
+/**
+ * WebServer's options.
+ * @typedef WebServerOptions
+ * @type {object}
+ * @property {object} [options]
+ * @property {string} [options.directory=./public/] - The directory to load the file. 
+ * @property {boolean} [options.acceptonlyget=true] - Only accepts get request.
+ * @property {string} [options.notfound=default html code] - Html code to respond on not found.
+ * @property {string} [options.req405error=default html code] - Html code to respond on post, put, delete and etc.
+ * @property {booleam} [options.useindexhtml=true] - If it's true, returns ./index.html file when requested directory.
+ * @property {string} [options.rootfile=/index.html] - You can specify a file to load as a top page. (Please specify files in the published directory/)
+ * @property {Number} [options.port=3000] - Port to host the page.
+ */
+
+/**
+ * Create a WebServer.
+ * @constructor
+ * @param {WebServerOptions} [options] - WebServer Options.
+ * @returns {WebServer} 
+ * @example &lt;caption>Simple example&lt;/caption>
+ * const {WebServer} = require("lite-web-server");
+ * var server = new WebServer();
+ * 
+ * server.start();
+ */
+
+class WebServer {
+  constructor(opts) {
+    this.opts = opts;
+  }
+
+  /**
+   * @returns {Promise&lt;Object | null>} 
+   */
+
+  start() {
+    var _this = this;
+    return new Promise(async function (resolve, reject) {
+      var opt = _this.opts;
+      if (!opt) {
+        var options = {
+          directory: "./public",
+          notfound: `&lt;!DOCTYPE html>\n&lt;html>\n&lt;head>\n&lt;title>404 Not Found&lt;/title>\n&lt;/head>\n&lt;body>\n&lt;center>\n&lt;h1>404 Not Found&lt;/h1>\n&lt;/center>\n&lt;hr>\n&lt;center>Node.js lite-web-server&lt;/center>\n&lt;/body>\n&lt;/html>`,
+          port: 3000,
+          acceptonlyget: true,
+          useindexhtml: true,
+          rootfile: "/index.html",
+          req405error: `&lt;!DOCTYPE html>\n&lt;html>\n&lt;head>\n&lt;title>405 Method Not Allowed&lt;/title>\n&lt;/head>\n&lt;body>\n&lt;center>\n&lt;h1>405 Method Not Allowed&lt;/h1>\n&lt;/center>\n&lt;hr>\n&lt;center>Node.js lite-web-server&lt;/center>\n&lt;/body>\n&lt;/html>`
+        }
+      } else {
+        var _dir = opt.dir || opt.directory || "./public";
+        if (_dir == "/") {
+          var __dir = ".";
+        } else if (_dir.endsWith("/")) {
+          var __dir = _dir.slice(0, -1);
+        } else {
+          var __dir = _dir;
+        }
+        if (__dir.startsWith("/")) {
+          var dir = "." + __dir;
+        } else {
+          var dir = __dir;
+        }
+        if (opt.acceptonlyget === false) {
+          var acceptonlyget = false;
+        } else {
+          var acceptonlyget = true;
+        }
+        if (opt.useindexhtml === false) {
+          var useindexhtml = false;
+        } else {
+          var useindexhtml = true;
+        }
+        var options = {
+          directory: dir || "./public",
+          notfound: opt.notfound || `&lt;!DOCTYPE html>\n&lt;html>\n&lt;head>\n&lt;title>404 Not Found&lt;/title>\n&lt;/head>\n&lt;body>\n&lt;center>\n&lt;h1>404 Not Found&lt;/h1>\n&lt;/center>\n&lt;hr>\n&lt;center>Node.js lite-web-server&lt;/center>\n&lt;/body>\n&lt;/html>`,
+          port: opt.port || 3000,
+          acceptonlyget: acceptonlyget,
+          useindexhtml: useindexhtml,
+          rootfile: opt.rootfile || "/index.html",
+          req405error: opt.req405error || `&lt;!DOCTYPE html>\n&lt;html>\n&lt;head>\n&lt;title>405 Method Not Allowed&lt;/title>\n&lt;/head>\n&lt;body>\n&lt;center>\n&lt;h1>405 Method Not Allowed&lt;/h1>\n&lt;/center>\n&lt;hr>\n&lt;center>Node.js lite-web-server&lt;/center>\n&lt;/body>\n&lt;/html>`
+        }
+      }
+
+      try {
+        var dir = await fs.readdirSync(options.directory);
+      } catch (error) {
+        reject(new Error(`Please create directory "${options.directory}" first.`));
+        return;
+      }
+      try {
+        var httpserver = http.createServer(async function (req, res) {
+          if (!(req.method.toUpperCase() == "GET")&amp;&amp;options.acceptonlyget == true) {
+            res.writeHead(405, { "Content-Type": "text/html" });
+            return res.end(options.req405error);
+          }
+          var url = req.url
+          //console.log(url)
+          if (url == "/") {
+            var filedir = `${options.directory}${options.rootfile}`
+          } else if (url.endsWith("/")&amp;&amp;options.useindexhtml) {
+            var filedir = `${options.directory}/index.html`
+          } else {
+            var filedir = `${options.directory}${url}`
+          }
+          try {
+            var httpcontent = (await GetFileType(filedir.toString())) || "text/plain"
+            var file = await fs.readFileSync(filedir)
+            res.writeHead(200, { "Content-Type": httpcontent })
+            res.end(file)
+          } catch (error) {
+            res.writeHead(404, { "Content-Type": "text/html" })
+            res.end(options.notfound)
+            //console.log(error)
+          }
+          //fs.Dir.readSync(options.directory+url)
+          //console.log(options.directory)
+        }).listen(options.port);
+        _this.running = httpserver;
+        _this.started = true;
+        resolve(httpserver);
+      } catch (error) {
+        reject(new Error(error));
+      }
+    });
+  } 
+}
+
+module.exports = WebServer
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.2 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.2.2) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.2.2))
+
+## Added
+
+- added x-powered-by header.
+
 ## 1.2.1 ([npm](https://www.npmjs.com/package/lite-web-server/v/1.2.1) / [Github](https://github.com/chasyumen/lite-web-server/releases/tag/1.2.1))
 
 ### Fixed

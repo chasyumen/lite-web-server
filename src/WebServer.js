@@ -287,6 +287,7 @@ class WebServer extends EventEmitter {
             try {
               var httpcontent = (await GetFileType(filedir.toString())) || "text/plain";
               var file = await fs.readFileSync(filedir);
+              res.setHeader("x-powered-by", "lite-web-server");
               res.writeHead(200, { "Content-Type": httpcontent });
               res.end(file);
             } catch (error) {
